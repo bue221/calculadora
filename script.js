@@ -6,8 +6,8 @@ const borrar = document.getElementsByName('borrar')[0];
 var text = document.getElementById('ope');
 
 var operacion = '';
-var numero1;
-var numero2;
+var numero1= '';
+var numero2= '';
 
 
 button.forEach((boton) => {
@@ -34,29 +34,53 @@ igual.addEventListener('click', () => {
     var valor = text.value;
     switch (operacion) {
         case "+":
-            calcular();
-            console.log(numero1);
-            console.log(valor.indexOf('+'));
-            //console.log('suma');
-            
+            calcular('+'); 
+            resultado = parseInt(numero1,10) + parseInt(numero2,10);
+            text.value =  resultado.toString();
+            limpiar();
             break;
         case "-":
+            calcular('-'); 
+            resultado = parseInt(numero1,10) - parseInt(numero2,10);
+            text.value =  resultado.toString();
+            limpiar();
             break;
         case "x":
+            calcular('x'); 
+            resultado = parseInt(numero1,10) * parseInt(numero2,10);
+            text.value =  resultado.toString();
+            limpiar();
             break;
         case "%":
+            calcular('%'); 
+            resultado = parseInt(numero1,10) / parseInt(numero2,10);
+            text.value =  resultado.toString();
+            limpiar();
             break;
         default: break;
     }
 });
 
- const calcular = (op)=>{
-    var valor = text.value; 
-    lugar = valor.indexOf('+');
-    logitud = valor.length;
-    //console.log(logitud);
-    for(i=0;i=lugar; i++ ){
-        numero1 += valor[i];
-    }
-    console.log(numero1);
- }
+
+const limpiar = ()=>{
+            numero1=''
+            numero2=''
+}
+
+const calcular = (op)=>{
+        pos = text.value.indexOf(op);
+        fin = text.value.length;
+        //console.log(fin);
+
+        for(i=0; i<pos; i++){
+                //console.log(text.value[i]);
+                numero1 = numero1+ text.value[i];
+        }
+
+        pos2 = pos + 1;
+
+        for(pos2 ; pos2<fin; pos2++){
+              //console.log(text.value[pos2]);
+              numero2 = numero2 + text.value[pos2];
+       }
+}
