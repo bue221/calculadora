@@ -33,3 +33,10 @@ h1{
         text-align: center;
         margin: 2rem;
 }
+
+@media screen and  (max-width: 1000px){
+        .contenedor{
+                margin:0;
+                padding: 0;
+        }
+}
